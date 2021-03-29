@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,48 +10,74 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 </head>
+
 <body style='margin : 0px; overflow: hidden;' onload="getLocation()">
-    <a-scene
-    renderer="logarithmicDepthBuffer: true;"
-    vr-mode-ui="enabled: false;"
-    embedded
+    <a-scene 
+    vr-mode-ui="enabled: false;" 
     arjs="sourceType: webcam; debugUIEnabled:false;"
-    > <!--Wrapping a-scene with vr ui disabled and camera source set--> <!--Preston lat: 53.761385 and long: -2.72117 -->
-        <a-text
-            value= ""
-            look-at="[gps-camera]" 
-            scale="25 25 25"
-            gps-entity-place="latitude:53.761385; longitude:-2.72117;"
-            color="blue"
-            id ="aframeText"
+    embedded>
+    <!--c&T building Co-ords 53.76321172034506, -2.7087599849289345 -->
+        <a-plane
             position="0 0 0" 
-        ></a-text><!--An a-text tag with values that set scale, gps co-ords for the marker, colour and look-at which makes it face the cam-->
-        <a-assets><!--Defining assets and giving them an ID for later use-->
-            <a-assets>
-                <a-asset-item 
-                    id="c&tBuilding" 
-                    src="assets/c&tBuilding.gltf">
-                </a-asset-item>
-            </a-assets>
-        </a-assets>
-
+            rotation="0 0 0" 
+            width="50" 
+            height="25" 
+            color="#007FB0" 
+            look-at="[gps-camera]" 
+            gps-entity-place="latitude: 53.763211; longitude: -2.708759;">
+        </a-plane>
+        <a-entity
+            gps-entity-place="latitude: 53.763211; longitude: -2.708759;"
+            look-at="[gps-camera]">
+            <a-plane
+                position="0 -12.5 0"
+                rotation="0 0 45"
+                width="10"
+                height="10"
+                color="#007FB0">
+            </a-plane>
+        </a-entity>
+        <a-entity
+            gps-entity-place="latitude: 53.763211; longitude: -2.708759;"
+            look-at="[gps-camera]"
+        >
+            <a-image
+                position="-15 0 0"  
+                width="15" 
+                height="15"
+                look-at="[gps-camera]" 
+                src="data:image/jpeg;base64,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"
+            >
+            </a-image>
+        </a-entity>
         <a-entity 
-            look-at="[gps-camera]" 
-            animation-mixer="loop: repeat" 
-            gltf-model="#c&tBuilding" 
-            scale=".1 .1 .1"
-            gps-entity-place="latitude: 53.761385; longitude: -2.72117;"
-            position="0 0 0" 
-        ></a-entity> <!--position is XYZ-->
+            gps-entity-place="latitude: 53.763211; longitude: -2.708759;"
+            look-at="[gps-camera]"
+            >
+            <a-text 
+                position="-5 4 0"  
+                value="C & T Building" 
+                color="white" 
+                width="100"
+                look-at="[gps-camera]" 
+                >
+            </a-text>
+            <a-text 
+                id="aframeText"
+                position="-1 -4 0"  
+                value="" 
+                color="white" 
+                width="150"
+                look-at="[gps-camera]"
+                >
+            </a-text>
+        </a-entity>
 
-        <a-camera gps-camera rotation-reader></a-camera><!--type of camera is set - lets AR.js know gps markers are being used-->
+        <a-camera gps-camera rotation-reader></a-camera>
 
-        <script> //Js script to work out user's location and then workour how far they are as the crow flies. 
-            const distanceMsg = document.querySelector('[gps-entity-place]').getAttribute('latitude');
-            console.log("Distance " + distanceMsg);
-            
+        <script> 
             getLocation = () => {//function to get users location
-                if (navigator.geolocation){//checking that geolocation is being tracked 
+                if (navigator.geolocation) {//checking that geolocation is being tracked 
                     navigator.geolocation.watchPosition(showPosition);//watches for position changes and returns every couple of seconds
                 } else {
                     console.log("Geolocation cannot be found");//logs and error code
@@ -59,27 +86,24 @@
 
             showPosition = (position) => {
                 console.log(document.getElementById("aframeText").getAttribute('value'));//logs the value of the a-text marker
-                calcDistance(position.coords.longitude, position.coords.latitude, -2.72117, 53.761385);
+                calcDistance(position.coords.longitude, position.coords.latitude, -2.708759, 53.763211);
             };
 
-            deg2rad = (deg) =>{ // a function to convert degrees to radians, this is a better unit for working with lat and long
-                return deg * (Math.PI/180);
+            deg2rad = (deg) => { // a function to convert degrees to radians, this is a better unit for working with lat and long
+                return deg * (Math.PI / 180);
             };
 
             calcDistance = (currentLong, currentLat, markerLong, markerLat) => {//Haversine formula - calculates distance between two lat and long points 
                 const R = 6371 //radius of the Earth in km
-
-                const dLat = deg2rad(markerLat-currentLat);
-                const dLon = deg2rad(markerLong-currentLong);
+                const dLat = deg2rad(markerLat - currentLat);
+                const dLon = deg2rad(markerLong - currentLong);
                 console.log(dLat, dLat);
-                const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(currentLat)) * Math.cos(deg2rad(markerLat)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(currentLat)) * Math.cos(deg2rad(markerLat)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                 var d = R * c; // Distance in km
                 var dM = Math.round(d * 1000); // converts to metres
-                document.getElementById("aframeText").setAttribute('value', "Pub is " + dM + " Metres away"); 
+                document.getElementById("aframeText").setAttribute('value', dM + " M");
             };
         </script>
     </a-scene>
 </body>
-
-</html>
