@@ -74,7 +74,14 @@
             </a-text>
         </a-entity>
 
-        <a-camera gps-camera rotation-reader camera="far:100000; near:0.01"></a-camera>
+        <!-- <a-camera gps-camera rotation-reader></a-camera> -->
+        <a-camera 
+            look-controls-enabled='false'
+            camera='near: 0.1; far: 50000;'
+            gps-camera
+            arjs-look-controls='smoothingFactor: 0.1'
+            rotation-reader>
+        </a-camera>
 
         <script> 
             getLocation = () => {//function to get users location
